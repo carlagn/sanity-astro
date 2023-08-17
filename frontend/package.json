@@ -1,0 +1,23 @@
+{
+  "name": "tutorial",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "deploy": "astro build && vercel deploy --prebuilt"
+  },
+  "dependencies": {
+    "@astrojs/preact": "^2.2.2",
+    "@astrojs/rss": "^2.4.4",
+    "@astrojs/vercel": "^3.8.1",
+    "astro": "^2.10.9",
+    "astro-portabletext": "^0.9.1",
+    "astro-sanity": "^1.1.7",
+    "preact": "^10.17.0",
+    "sass": "^1.65.1"
+  }
+}
