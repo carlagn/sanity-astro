@@ -1,11 +1,17 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Greeting from '../components/Greeting.jsx';
+import { useSanityClient } from 'astro-sanity';
+const posts = await useSanityClient().fetch(`*[_type == "post"]`);
 
 const pageTitle = "Home Page";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
   <h2>My awesome blog subtitle</h2>
-  <Greeting client:load messages={["Hej", "Hallo", "Hola", "Habari"]} />
+  {posts && <ul>
+    {posts.map((post) => (
+      <li><a href={`post/${post.slug.current}`}>{post.title}</a></li>
+    ))}
+  </ul>}
 </BaseLayout>

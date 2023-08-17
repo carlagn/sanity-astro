@@ -15,10 +15,11 @@ export async function getStaticPaths() {
   });
 }
 
-const { title, bio } = Astro.props;
 
+const { title, body } = Astro.props;
+console.log(body)
 ---
 
 <h1>{title}</h1>
 
-<PortableText portableText={bio} />
+<PortableText portableText={body} />

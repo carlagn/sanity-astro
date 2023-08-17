@@ -5,8 +5,8 @@ const myDocument = {
   fields: [
     defineField({
       name: 'title',
-        title: 'title',
-        type: 'string'
+      title: 'title',
+      type: 'string'
     }),
     defineField({
       name: 'slug',
@@ -95,11 +95,11 @@ const myDocument = {
       title: 'codeStyle',
       type: 'boolean'
     }),
-    {    
-      type: "markdown",
-      description: "A Github flavored markdown field with image uploading",
-      name: "bio"
-    }
+    defineField({
+      name: 'body',
+      title: 'Content',
+      type: 'markdown',
+    }),
   ]
 }
 export default defineType(myDocument)
