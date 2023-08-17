@@ -1,14 +1,12 @@
-import {defineField, defineType} from 'sanity'
-
-export default defineType({
-  name: 'post',
-  title: 'Post',
-  type: 'document',
+import {defineArrayMember, defineField, defineType} from 'sanity'
+const myDocument = {
+  type: "document",
+  name: "post",
   fields: [
     defineField({
       name: 'title',
-      title: 'Title',
-      type: 'string',
+        title: 'title',
+        type: 'string'
     }),
     defineField({
       name: 'slug',
@@ -21,34 +19,87 @@ export default defineType({
       },
     }),
     defineField({
-      name: 'excerpt',
-      title: 'Excerpt',
-      type: 'text',
-      rows: 4,
+      name: 'navTitle',
+      title: 'navTitle',
+      type: 'string'
     }),
     defineField({
-      name: 'mainImage',
-      title: 'Main image',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
+      name: 'metaTitle',
+      title: 'metaTitle',
+      type: 'string'
     }),
     defineField({
-      name: 'body',
-      title: 'Body',
-      type: 'blockContent',
+      name: 'metaDescription',
+      title: 'metaDescription',
+      type: 'string'
     }),
-  ],
-  preview: {
-    select: {
-      title: 'title',
-      author: 'author.name',
-      media: 'mainImage',
-    },
-    prepare(selection) {
-      const {author} = selection
-      return {...selection, subtitle: author && `by ${author}`}
-    },
-  },
-})
+    defineField({
+      name: "langSwitcher",
+      type: "array",
+      title: "langSwitcher",
+      of: [
+        defineArrayMember({
+          type: 'string',
+          name: 'lang'
+        })
+      ]
+    }),
+    defineField({
+      name: "dbSwitcher",
+      type: "array",
+      title: "dbSwitcher",
+      of: [
+        defineArrayMember({
+          type: 'string',
+          name: 'db'
+        })
+      ]
+    }),
+    defineField({
+      name: 'staticLink',
+      title: 'staticLink',
+      type: 'boolean'
+    }),
+    defineField({
+      name: 'duration',
+      title: 'duration',
+      type: 'string'
+    }),
+    defineField({
+      name: 'preview',
+      title: 'preview',
+      type: 'boolean'
+    }),
+    defineField({
+      name: 'earlyaccess',
+      title: 'earlyaccess',
+      type: 'boolean'
+    }),
+    defineField({
+      name: 'toc',
+      title: 'toc',
+      type: 'boolean'
+    }),
+    defineField({
+      name: 'hidePage',
+      title: 'hidePage',
+      type: 'boolean'
+    }),
+    defineField({
+      name: 'tocDepth',
+      title: 'tocDepth',
+      type: 'number'
+    }),
+    defineField({
+      name: 'codeStyle',
+      title: 'codeStyle',
+      type: 'boolean'
+    }),
+    {    
+      type: "markdown",
+      description: "A Github flavored markdown field with image uploading",
+      name: "bio"
+    }
+  ]
+}
+export default defineType(myDocument)
